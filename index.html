@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+
+        body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #000000, #434343);
+    padding: 30px;
+    text-align: center;
+    color: #ffffff;
+    background-attachment: fixed;
+    background-size: cover;
+    animation: bg 10s infinite;
+}
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 6em; /* Increase font size */
+    text-align: center;
+    color: #ff4500; /* Change color to orange-red */
+    text-shadow: 2px 2px 4px #000000;
+    animation: colorchange 5s infinite, fadeIn 3s ease-in-out, scale 3s infinite;
+}
+h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4em;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px #000000;
+    animation: colorchange 5s infinite;
+}
+
+p {
+    font-size: 1.5em;
+    text-shadow: 1px 1px 2px #ffffff;
+    animation: colorchange 5s infinite;
+}
+        .carousel {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    margin-top: 2em;
+}
+
+.carousel img {
+    
+    width: 80%;
+    height: auto;
+    object-fit: contain;
+    margin: 0 1em;
+}
+
+@keyframes colorchange {
+    0% { color: #ffffff; }
+    25% { color: #ff0000; }
+    50% { color: #ffffff; }
+    75% { color: #ff0000; }
+    100% { color: #ffffff; }
+}
+@keyframes scale {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes bg {
+    0% { background: #000000; }
+    50% { background: #434343; }
+    100% { background: #000000; }
+}
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            padding-top: 100px; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.4); 
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        button {
+            display: block;
+            width: 200px;
+            height: 60px;
+            margin: 20px auto;
+            background: linear-gradient(to right, #ff7f50, #ff6347);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px #999;
+            outline: none;
+        }
+        button:hover {
+            background: linear-gradient(to right, #ff6347, #ff7f50);
+        }
+        button:active {
+            background: #ff6347;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .carousel {
+    display: flex;
+    justify-content: space-between;
+}
+
+.carousel img {
+    width: 80%;
+    height: auto;
+    object-fit: contain;
+}
+        .image-grid img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+        .image-grid img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>ES Rouh 9albi,</h1>
+    <h2>I'm Sorry</h2>
+    <p>I know I messed up, and I'm truly sorry. I hope you can find it in your heart to forgive me.</p>
+    <button onclick="toggleSong()" id="playPauseBtn">Play Our Song</button>
+    <button id="myBtn">Read More</button>
+    <div class="carousel">
+        <img src="sorry.jpg">
+        <img src="sosorry.png">
+        
+    </div>
+    <section id="feelings">
+        <h2>My Feelings</h2>
+        <p>I want to express how deeply sorry I am for what happened. I value our relationship and I regret the mistakes I've made. I'm committed to making things right and I hope you can find it in your heart to forgive me.</p>
+    </section>
+    <section id="images">
+        <h2>Our Moments</h2>
+        <div class="carousel">
+            <img src="moment1.png" alt="Image 1">
+            <img src="moment2.png" alt="Image 2">
+            <!-- Add more images as needed -->
+        </div>
+    </section>
+<p>With all my love,</p>
+<p>Toutou</p>
+<audio id="ourSong" src="our song.mp3"></audio>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Here's something more about how much I regret my actions and how much I value our relationship...</p>
+    </div>
+</div>
+<script>
+    var isPlaying = false;
+    var ourSong = document.getElementById('ourSong');
+    var playPauseBtn = document.getElementById('playPauseBtn');
+
+    function toggleSong() {
+        if (isPlaying) {
+            ourSong.pause();
+            playPauseBtn.textContent = 'Play Our Song';
+        } else {
+            ourSong.play();
+            playPauseBtn.textContent = 'Pause Our Song';
+        }
+        isPlaying = !isPlaying;
+    }
+
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("myBtn");
+    var span = document.getElementsByClassName("close")[0];
+
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+</body>
+</html>
